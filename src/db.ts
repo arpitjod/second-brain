@@ -6,4 +6,19 @@ const UserSchema=new Schema({
     password:{type:String,required:true},
 
 });
-export const UserModel=model("User",UserSchema); 
+export const UserModel=model("User",UserSchema);
+
+const ContentSchema=new Schema({
+    title:String,
+    link:String,
+    tags:[{type:mongoose.Schema.Types.ObjectId,ref:"Tag"}],
+    type:String,
+    userId:{type:mongoose.Schema.Types.ObjectId,ref:"User"},
+})
+const LinkSchema = new Schema({
+    hash: String,
+    userId: {type: mongoose.Types.ObjectId, ref: 'User', required: true, unique: true },
+})
+
+export const LinkModel = model("Links", LinkSchema);
+export const ContentModel = model("Content", ContentSchema);
