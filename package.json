@@ -21,8 +21,11 @@
   },
   "homepage": "https://github.com/arpitjod/second-brain#readme",
   "dependencies": {
+    "@types/cors": "^2.8.19",
     "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
     "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
     "zod": "^4.1.11"
   },
   "devDependencies": {

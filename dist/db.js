@@ -33,7 +33,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserModel = void 0;
+exports.ContentModel = exports.LinkModel = exports.UserModel = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
 mongoose_1.default.connect("mongodb+srv://officialarpit7:XeQKLot1l0jbr892@cluster0.ay15zyk.mongodb.net/Brainly?retryWrites=true&w=majority&appName=Cluster0");
 const UserSchema = new mongoose_1.Schema({
@@ -41,4 +41,17 @@ const UserSchema = new mongoose_1.Schema({
     password: { type: String, required: true },
 });
 exports.UserModel = (0, mongoose_1.model)("User", UserSchema);
+const ContentSchema = new mongoose_1.Schema({
+    title: String,
+    link: String,
+    tags: [{ type: mongoose_1.default.Schema.Types.ObjectId, ref: "Tag" }],
+    type: String,
+    userId: { type: mongoose_1.default.Schema.Types.ObjectId, ref: "User" },
+});
+const LinkSchema = new mongoose_1.Schema({
+    hash: String,
+    userId: { type: mongoose_1.default.Types.ObjectId, ref: "User", required: true, unique: true }
+});
+exports.LinkModel = (0, mongoose_1.model)("Links", LinkSchema);
+exports.ContentModel = (0, mongoose_1.model)("Content", ContentSchema);
 //# sourceMappingURL=db.js.map
